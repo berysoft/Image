@@ -155,6 +155,8 @@ abstract class Common extends Adapter
     abstract protected function openJpeg($file);
 
     abstract protected function openPng($file);
+    
+    abstract protected function openWebP($file);
 
     /**
      * Creates an image.
@@ -190,6 +192,10 @@ abstract class Common extends Adapter
 
         if ($type == 'png') {
             $this->openPng($file);
+        }
+        
+        if ($type == 'webp') {
+            $this->openWebP($file);
         }
 
         if (false === $this->resource) {

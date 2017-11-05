@@ -77,6 +77,7 @@ interface AdapterInterface
      */
     public function savePng($file);
 
+    public function saveWebP($file);
     /**
      * Save the image as a jpeg.
      *

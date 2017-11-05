@@ -14,6 +14,7 @@ use Gregwar\Image\Exceptions\GenerationError;
  * @method Image saveGif($file)
  * @method Image savePng($file)
  * @method Image saveJpeg($file, $quality)
+ * @method Image saveWebP($file)
  * @method Image resize($width = null, $height = null, $background = 'transparent', $force = false, $rescale = false, $crop = false)
  * @method Image forceResize($width = null, $height = null, $background = 'transparent')
  * @method Image scaleResize($width = null, $height = null, $background = 'transparent', $crop = false)
@@ -95,6 +96,7 @@ class Image
         'jpeg'  => 'jpeg',
         'png'   => 'png',
         'gif'   => 'gif',
+        'webp'  => 'webp'
     );
 
     /**
@@ -570,6 +572,11 @@ class Image
     {
         return $this->cacheFile('png');
     }
+    
+    public function webp()
+    {
+        return $this->cacheFile('webp');
+    }
 
     /**
      * Generates and output an image using the same type as input.
@@ -672,6 +679,10 @@ class Image
 
             if ($type == 'png') {
                 $success = $this->getAdapter()->savePng($file);
+            }
+            
+            if ($type == 'webp') {
+                $success = $this->getAdapter()->saveWebp($file);
             }
 
             if (!$success) {
